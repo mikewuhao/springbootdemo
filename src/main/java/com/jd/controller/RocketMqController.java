@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 /**
  * @author wuhao
  * @Title: RocketMqController
@@ -26,6 +25,7 @@ public class RocketMqController {
 
     @GetMapping("/test")
     public void TestSend() {
+
         DefaultMQProducer producer = rocketMQProducer.getRocketMQProducer();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

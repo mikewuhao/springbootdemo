@@ -1,6 +1,5 @@
 package com.jd.mq;
 
-import org.springframework.context.annotation.Configuration;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.springframework.beans.factory.annotation.Value;
