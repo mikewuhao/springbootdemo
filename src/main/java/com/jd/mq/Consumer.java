@@ -1,5 +1,8 @@
 package com.jd.mq;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.jd.domain.User;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
@@ -33,7 +36,8 @@ public class Consumer {
                 try {
                     for (MessageExt messageExt : list) {
                         String messageBody = new String(messageExt.getBody(), RemotingHelper.DEFAULT_CHARSET);
-                        System.out.println("[Consumer] msgID(" + messageExt.getMsgId() + ") msgBody : " + messageBody);
+                        User user = JSON.parseObject(messageBody, User.class);
+                        System.out.println("[Consumer] msgID(" + messageExt.getMsgId() + ") msgBody : " + user.toString());
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
